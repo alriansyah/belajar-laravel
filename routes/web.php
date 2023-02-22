@@ -22,3 +22,7 @@ Route::get('/', function () {
         'buah' => ['Apel', 'Mangga', 'Jeruk', 'Semangka', 'Melon', 'Strawberry']
     ]);
 });
+
+Route::get('/about', function(){
+    return view('about');
+});
