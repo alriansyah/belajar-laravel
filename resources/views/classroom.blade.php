@@ -1,29 +1,23 @@
 @extends('layouts.mainLayout')
-@section('title', 'Siswa') {{-- ditangkap yield --}}
+@section('title', 'Kelas') {{-- ditangkap yield --}}
 
 @section('content')
     {{--  --}}
     <div class="container">
-        <h1>Halaman Siswa</h1>
-        <h3>Siswa List</h3>
+        <h1>Halaman Kelas</h1>
+        <h3>Class List</h3>
         <table class="table">
             <thead>
                 <tr>
                     <th>No.</th>
                     <th>Nama</th>
-                    <th>Jenis Kelamin</th>
-                    <th>NIM</th>
-                    <th>Kelas</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($siswaList as $data)
+                @foreach ($classList as $data)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $data->name }}</td>
-                        <td>{{ $data->gender }}</td>
-                        <td>{{ $data->nim }}</td>
-                        <td>{{ $data->class_id }}</td>
+                        <td>{{ $data->nama }}</td>
                     </tr>
                 @endforeach
             </tbody>

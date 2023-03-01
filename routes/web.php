@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\ClassController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,5 @@ Route::get('/', function () {
 // });
 
 Route::get('/siswa', [SiswaController::class, 'index']);
+
+Route::get('/class', [ClassController::class, 'index']);
