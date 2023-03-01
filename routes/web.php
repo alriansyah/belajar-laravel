@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home', [
-        'name' => 'Al Riansyah', 
-        'alamat' => 'Desa Pelita Jaya', 
+        'name' => 'Al Riansyah',
+        'alamat' => 'Desa Pelita Jaya',
         'pekerjaan' => 'Fullstack Developer',
         'role' => 'user',
         'buah' => ['Apel', 'Mangga', 'Jeruk', 'Semangka', 'Melon', 'Strawberry']
     ]);
 });
 
-Route::get('/about', function(){
-    return view('about');
-});
+// Route::get('/kelas', function(){
+//     return view('kelas');
+// });
+
+Route::get('/siswa', [SiswaController::class, 'index']);
