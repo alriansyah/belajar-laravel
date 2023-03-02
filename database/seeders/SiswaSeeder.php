@@ -39,6 +39,7 @@ class SiswaSeeder extends Seeder
         //     ]);
         // }
 
+        // Factory Faker
         Siswa::factory()
             ->count(20)
             ->create();
