@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Siswa extends Model
 {
@@ -19,5 +20,11 @@ class Siswa extends Model
     public function class(): BelongsTo
     {
         return $this->belongsTo(ClassRoom::class);
+    }
+
+    // many to many
+    public function extracurriculars(): BelongsToMany
+    {
+        return $this->belongsToMany(Extracurricular::class, 'siswa_extracurricular', 'siswa_id', 'extracurricular_id');
     }
 }
