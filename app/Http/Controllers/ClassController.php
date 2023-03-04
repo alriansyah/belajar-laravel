@@ -9,7 +9,7 @@ class ClassController extends Controller
 {
     public function index()
     {
-        $class = ClassRoom::all(); // SELECT * FROM namatable;
+        $class = ClassRoom::with('siswa')->get(); // $class = NamaModel::with('namaMethodRelationship')->get(); // ini cara Eager Loading
         return view('/classroom', ['classList' => $class]);
     }
 }

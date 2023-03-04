@@ -23,7 +23,8 @@
                         <td>{{ $data->name }}</td>
                         <td>{{ $data->gender }}</td>
                         <td>{{ $data->nim }}</td>
-                        <td>{{ $data->class_id }}</td>
+                        <td>{{ $data->class->nama }}</td> {{-- Hasil join siswa -> class (many to one) menggunakan eloquent relatioship --}}
+                        {{-- <td>{{ $data->class['nama'] }}</td> bisa gini jg, ini cara dari tutorial cara fajar --}}
                     </tr>
                 @endforeach
             </tbody>
