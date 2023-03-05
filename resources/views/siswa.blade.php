@@ -15,6 +15,7 @@
                     <th>NIM</th>
                     <th>Kelas</th>
                     <th>Eskul</th>
+                    <th>Wali Kelas</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,6 +32,7 @@
                                 - {{ $items->name }} <br>
                             @endforeach
                         </td>
+                        <td>{{ $data->class->waliKelas->name }}</td>
                     </tr>
                 @endforeach
             </tbody>

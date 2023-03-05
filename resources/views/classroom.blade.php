@@ -12,6 +12,7 @@
                     <th>No.</th>
                     <th>Nama</th>
                     <th>Siswa</th>
+                    <th>Wali Kelas</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +25,7 @@
                                 - {{ $siswa->name }} <br>
                             @endforeach
                         </td>
+                        <td>{{ $data->waliKelas->name }}</td>
                     </tr>
                 @endforeach
             </tbody>
