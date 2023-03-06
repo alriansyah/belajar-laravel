@@ -40,7 +40,7 @@
                             <a class="nav-link" href="/extracurricular">Eskul</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="teacher">Teacher</a>
+                            <a class="nav-link" href="/teacher">Teacher</a>
                         </li>
                     </ul>
                 </div>

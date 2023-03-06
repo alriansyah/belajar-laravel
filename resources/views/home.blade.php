@@ -1,5 +1,9 @@
-@extends('layouts.mainLayout')
+@extends('dashboard.index')
 @section('title', 'Home') {{-- ditangkap yield --}}
+
+@section('keterangan')
+    <h1 class="h3 mb-0 text-gray-800">Home</h1>
+@endsection
 
 @section('content')
     <div class="container">
@@ -61,8 +65,8 @@
     <br>
     {{--  --}}
     <div class="container">
-        <table class="table">
-            <thead class="bg-warning">
+        <table class="table table-striped table-hover">
+            <thead class="bg-success text-gray-800">
                 <tr>
                     <th scope="col">No.</th>
                     <th scope="col">Nama Buah</th>

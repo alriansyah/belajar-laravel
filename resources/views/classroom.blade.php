@@ -1,11 +1,14 @@
-@extends('layouts.mainLayout')
+{{-- @extends('layouts.mainLayout') --}}
+@extends('dashboard.index')
 @section('title', 'Kelas') {{-- ditangkap yield --}}
+
+@section('keterangan')
+    <h1 class="h3 mb-0 text-gray-800">Kelas</h1>
+@endsection
 
 @section('content')
     {{--  --}}
     <div class="container">
-        <h1>Halaman Kelas</h1>
-        <h3>Class List</h3>
         <table class="table">
             <thead>
                 <tr>
