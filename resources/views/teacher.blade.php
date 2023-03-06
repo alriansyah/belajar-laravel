@@ -9,8 +9,8 @@
 @section('content')
     {{--  --}}
     <div class="container">
-        <table class="table">
-            <thead>
+        <table class="table table-hover table-bordered border-dark">
+            <thead class="bg-success text-gray-800">
                 <tr>
                     <th>No.</th>
                     <th>Nama</th>

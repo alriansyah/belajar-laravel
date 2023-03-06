@@ -65,7 +65,7 @@
     <br>
     {{--  --}}
     <div class="container">
-        <table class="table table-striped table-hover">
+        <table class="table table-hover table-bordered border-dark">
             <thead class="bg-success text-gray-800">
                 <tr>
                     <th scope="col">No.</th>
