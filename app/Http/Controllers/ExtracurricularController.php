@@ -14,8 +14,21 @@ class ExtracurricularController extends Controller
         return view('/extracurricular', ['eskul' => $extracurricular]);
     }
 
-    public function show($id) {
+    public function show($id)
+    {
         $extracurricular = Extracurricular::with('siswa')->findOrFail($id);
         return view('/extracurricular-detail', ['extracurricular' => $extracurricular]);
+    }
+
+    public function create()
+    {
+        return view('/extracurricular-add');
+    }
+    
+    // tangkap dan insert data
+    public function store(Request $request)
+    {
+        $extracurricular = Extracurricular::create($request->all());
+        return redirect('/extracurricular');
     }
 }

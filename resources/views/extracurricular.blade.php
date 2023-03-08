@@ -9,6 +9,11 @@
 @section('content')
     {{--  --}}
     <div class="container">
+
+        <div class="mb-3">
+            <a href="/extracurricular-add" class="btn btn-primary">Tambah Data <i class="fa-solid fa-plus"></i></a>
+        </div>
+
         <table class="table table-hover table-bordered border-dark">
             <thead class="bg-success text-gray-800">
                 <tr>

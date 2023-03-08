@@ -12,14 +12,19 @@ class Siswa extends Model
     use HasFactory;
     protected $table = 'siswa';
     protected $fillable = [
-        'name', 'gender', 'nim', 'class_id', 'created_at', 'updated_at'
+        'name', 
+        'gender', 
+        'nim', 
+        'class_id', 
+        // 'created_at', 
+        // 'updated_at'
     ];
 
 
     // Eloquent relationship : One To Many (Inverse) / Belongs To
     public function class(): BelongsTo
     {
-        return $this->belongsTo(ClassRoom::class);
+        return $this->belongsTo(ClassRoom::class);  
     }
 
     // many to many

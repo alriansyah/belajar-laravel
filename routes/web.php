@@ -33,19 +33,27 @@ Route::get('/', function () {
 Route::controller(SiswaController::class)->group(function () {
     Route::get('/siswa', 'index');
     Route::get('/siswa-detail/{id}', 'show');
+    Route::get('/siswa-add', 'create');
+    Route::post('/siswa', 'store');
 });
 
 Route::controller(ClassController::class)->group(function () {
     Route::get('/class', 'index');
     Route::get('/class-detail/{id}', 'show');
+    Route::get('/class-add', 'create');
+    Route::post('/class', 'store');
 });
 
 Route::controller(ExtracurricularController::class)->group(function () {
     Route::get('/extracurricular', 'index');
     Route::get('/extracurricular-detail/{id}', 'show');
+    Route::get('/extracurricular-add', 'create');
+    Route::post('/extracurricular', 'store');
 });
 
 Route::controller(TeacherController::class)->group(function () {
     Route::get('/teacher', 'index');
     Route::get('/teacher-detail/{id}', 'show');
+    Route::get('/teacher-add', 'create');
+    Route::post('/teacher', 'store');
 });

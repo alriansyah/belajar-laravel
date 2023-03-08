@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Extracurricular extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name'
+    ];
 
     // many to many
     public function siswa(): BelongsToMany

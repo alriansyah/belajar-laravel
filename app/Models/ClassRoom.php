@@ -11,6 +11,10 @@ class ClassRoom extends Model
 {
     use HasFactory;
     protected $table = 'class';
+    protected $fillable = [
+        'nama',  
+        'teacher_id', 
+    ];
 
     // Eloquent relationship : One To Many
     public function siswa(): HasMany
