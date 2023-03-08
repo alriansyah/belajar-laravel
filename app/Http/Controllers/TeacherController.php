@@ -10,7 +10,12 @@ class TeacherController extends Controller
     function index()
     {
         // Eloquent ORM (rekomendasi)
-        $teacher = Teacher::all();
+        $teacher = Teacher::get();
         return view('/teacher', ['teacherList' => $teacher]);
+    }
+
+    public function show($id) {
+        $teacher = Teacher::with('class.siswa')->findOrFail($id);
+        return view('/teacher-detail', ['teacher' => $teacher]);
     }
 }

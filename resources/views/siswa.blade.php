@@ -16,6 +16,7 @@
                     <th>Nama</th>
                     <th>Jenis Kelamin</th>
                     <th>NIM</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +26,7 @@
                         <td>{{ $data->name }}</td>
                         <td>{{ $data->gender }}</td>
                         <td>{{ $data->nim }}</td>
+                        <td><a href="/siswa-detail/{{ $data->id }}"><i class="fa-regular fa-eye"></i></a></td>
                     </tr>
                 @endforeach
             </tbody>

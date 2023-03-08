@@ -14,6 +14,7 @@
                 <tr>
                     <th>No.</th>
                     <th>Nama</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,6 +22,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $data->name }}</td>
+                        <td><a href="/teacher-detail/{{ $data->id }}"><i class="fa-regular fa-eye"></i></a></td>
                     </tr>
                 @endforeach
             </tbody>

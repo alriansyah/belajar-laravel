@@ -27,11 +27,25 @@ Route::get('/', function () {
     ]);
 });
 
-// Route::get('/kelas', function(){
-//     return view('kelas');
-// });
+// Route::get('/siswa', [SiswaController::class, 'index']);
+// Route::get('/siswa/{id}', [SiswaController::class, 'index']);
 
-Route::get('/siswa', [SiswaController::class, 'index']);
-Route::get('/class', [ClassController::class, 'index']);
-Route::get('/extracurricular', [ExtracurricularController::class, 'index']);
-Route::get('/teacher', [TeacherController::class, 'index']);
+Route::controller(SiswaController::class)->group(function () {
+    Route::get('/siswa', 'index');
+    Route::get('/siswa-detail/{id}', 'show');
+});
+
+Route::controller(ClassController::class)->group(function () {
+    Route::get('/class', 'index');
+    Route::get('/class-detail/{id}', 'show');
+});
+
+Route::controller(ExtracurricularController::class)->group(function () {
+    Route::get('/extracurricular', 'index');
+    Route::get('/extracurricular-detail/{id}', 'show');
+});
+
+Route::controller(TeacherController::class)->group(function () {
+    Route::get('/teacher', 'index');
+    Route::get('/teacher-detail/{id}', 'show');
+});

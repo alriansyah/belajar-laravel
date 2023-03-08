@@ -18,10 +18,15 @@ class ClassController extends Controller
         // select * from siswa where class='1D';
         
         // eager loading
-        $class = ClassRoom::with('siswa', 'waliKelas')->get(); // $class = NamaModel::with('namaMethodRelationship')->get();
+        $class = ClassRoom::get(); // $class = NamaModel::with('namaMethodRelationship')->get();
         // Cara req data
         // select * from class;
         // select * from siswa where in('1A', '1B', '1C', '1D');
         return view('/classroom', ['classList' => $class]);
+    }
+
+    public function show($id) {
+        $class = ClassRoom::with('siswa', 'waliKelas')->findOrFail($id);
+        return view('/class-detail', ['class' => $class]);
     }
 }

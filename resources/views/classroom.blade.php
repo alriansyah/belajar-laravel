@@ -14,8 +14,7 @@
                 <tr>
                     <th>No.</th>
                     <th>Nama</th>
-                    <th>Siswa</th>
-                    <th>Wali Kelas</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,12 +22,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $data->nama }}</td>
-                        <td>
-                            @foreach ($data->siswa as $siswa)
-                                - {{ $siswa->name }} <br>
-                            @endforeach
-                        </td>
-                        <td>{{ $data->waliKelas->name }}</td>
+                        <td><a href="/class-detail/{{ $data->id }}"><i class="fa-regular fa-eye"></i></a></td>
                     </tr>
                 @endforeach
             </tbody>

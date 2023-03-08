@@ -14,7 +14,7 @@
                 <tr>
                     <th>No.</th>
                     <th>Nama</th>
-                    <th>Anggota</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,11 +22,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $data->name }}</td>
-                        <td>
-                            @foreach ($data->siswa as $items)
-                                - {{ $items->name }} <br>
-                            @endforeach
-                        </td>
+                        <td><a href="/extracurricular-detail/{{ $data->id }}"><i class="fa-regular fa-eye"></i></a></td>
                     </tr>
                 @endforeach
             </tbody>
