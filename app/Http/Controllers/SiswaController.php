@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ClassRoom;
 use Carbon\Carbon;
 use App\Models\Siswa;
+use App\Models\ClassRoom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class SiswaController extends Controller
 {
@@ -42,6 +43,12 @@ class SiswaController extends Controller
         // $siswa = new Siswa;
         // $siswa->create($request->all());
         $siswa = Siswa::create($request->all());
+
+        if ($siswa) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Add new siswa success.!');
+        }
+
         return redirect('/siswa');
     }
 
@@ -49,10 +56,11 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::with('class')->findOrFail($id);
         $class = ClassRoom::where('id', '!=', $siswa->class_id)->get(['id', 'nama']);
-        return view('/siswa-edit',['siswa' => $siswa, 'class' => $class]);
+        return view('/siswa-edit', ['siswa' => $siswa, 'class' => $class]);
     }
- 
-    public function update(Request $request, $id) {
+
+    public function update(Request $request, $id)
+    {
         // Manual
         // $siswa = Siswa::findOrFail($id);
         // $siswa->name = $request->name;
@@ -65,6 +73,5 @@ class SiswaController extends Controller
         $siswa = Siswa::findOrFail($id);
         $siswa->update($request->all());
         return redirect('/siswa');
-        
     }
 }
