@@ -44,4 +44,27 @@ class SiswaController extends Controller
         $siswa = Siswa::create($request->all());
         return redirect('/siswa');
     }
+
+    public function edit(Request $request, $id)
+    {
+        $siswa = Siswa::with('class')->findOrFail($id);
+        $class = ClassRoom::where('id', '!=', $siswa->class_id)->get(['id', 'nama']);
+        return view('/siswa-edit',['siswa' => $siswa, 'class' => $class]);
+    }
+ 
+    public function update(Request $request, $id) {
+        // Manual
+        // $siswa = Siswa::findOrFail($id);
+        // $siswa->name = $request->name;
+        // $siswa->gender = $request->gender;
+        // $siswa->nim = $request->nim;
+        // $siswa->class_id = $request->class_id;
+        // $siswa->save();
+
+        // mass assigment | wajib didaftarkan menggunakan fillable di model untuk data apa aja yang boleh diisi
+        $siswa = Siswa::findOrFail($id);
+        $siswa->update($request->all());
+        return redirect('/siswa');
+        
+    }
 }

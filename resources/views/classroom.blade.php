@@ -27,7 +27,12 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $data->nama }}</td>
-                        <td><a href="/class-detail/{{ $data->id }}"><i class="fa-regular fa-eye"></i></a></td>
+                        <td class="w-15">
+                            <div class="container d-flex justify-content-around reset">
+                                <a href="/class-detail/{{ $data->id }}"><i class="fa-regular fa-eye fa-lg"></i></a>
+                                <a href="/class-edit/{{ $data->id }}"><i class="fa-solid fa-pen-to-square fa-lg"></i></a>
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

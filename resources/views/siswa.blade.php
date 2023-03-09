@@ -31,7 +31,12 @@
                         <td>{{ $data->name }}</td>
                         <td>{{ $data->gender }}</td>
                         <td>{{ $data->nim }}</td>
-                        <td><a href="/siswa-detail/{{ $data->id }}"><i class="fa-regular fa-eye"></i></a></td>
+                        <td class="w-15">
+                            <div class="container d-flex justify-content-around reset">
+                                <a href="/siswa-detail/{{ $data->id }}"><i class="fa-regular fa-eye fa-lg"></i></a>
+                                <a href="/siswa-edit/{{ $data->id }}"><i class="fa-solid fa-pen-to-square fa-lg"></i></a>
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

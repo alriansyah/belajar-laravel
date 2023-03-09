@@ -24,11 +24,24 @@ class ExtracurricularController extends Controller
     {
         return view('/extracurricular-add');
     }
-    
+
     // tangkap dan insert data
     public function store(Request $request)
     {
         $extracurricular = Extracurricular::create($request->all());
+        return redirect('/extracurricular');
+    }
+
+    public function edit($id)
+    {
+        $eskul = Extracurricular::findOrFail($id);
+        return view('/extracurricular-edit', ['eskul' => $eskul]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $eskul = Extracurricular::findOrFail($id);
+        $eskul->update($request->all());
         return redirect('/extracurricular');
     }
 }
