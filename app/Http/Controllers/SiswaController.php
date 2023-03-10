@@ -86,4 +86,23 @@ class SiswaController extends Controller
 
         return redirect('/siswa');
     }
+
+    public function delete($id)
+    {
+        $siswa = Siswa::findOrFail($id);
+        return view('/siswa', ['siswa' => $siswa]);
+    }
+
+    public function destroy($id)
+    {
+        $deletedSiswa = Siswa::findOrFail($id);
+        $deletedSiswa->delete();
+
+        if ($deletedSiswa) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Delete siswa success.!');
+        }
+
+        return redirect('/siswa');
+    }
 }

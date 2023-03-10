@@ -37,6 +37,8 @@ Route::controller(SiswaController::class)->group(function () {
     Route::post('/siswa', 'store');
     Route::get('/siswa-edit/{id}', 'edit');
     Route::put('/siswa/{id}', 'update');
+    Route::get('/siswa-delete/{id}', 'delete');
+    Route::delete('/siswa-destroy/{id}', 'destroy');
 });
 
 Route::controller(ClassController::class)->group(function () {
