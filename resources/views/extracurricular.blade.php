@@ -14,6 +14,12 @@
             <a href="/extracurricular-add" class="btn btn-primary">Tambah Data <i class="fa-solid fa-plus"></i></a>
         </div>
 
+        @if (Session::has('status'))
+            <div class="alert alert-success" role="alert">
+                {{ Session::get('message') }}
+            </div>
+        @endif
+
         <table class="table table-hover table-bordered border-dark">
             <thead class="bg-success text-gray-800">
                 <tr>
@@ -29,8 +35,10 @@
                         <td>{{ $data->name }}</td>
                         <td class="w-15">
                             <div class="container d-flex justify-content-around reset">
-                                <a href="/extracurricular-detail/{{ $data->id }}"><i class="fa-regular fa-eye fa-lg"></i></a>
-                                <a href="/extracurricular-edit/{{ $data->id }}"><i class="fa-solid fa-pen-to-square fa-lg"></i></a>
+                                <a href="/extracurricular-detail/{{ $data->id }}"><i
+                                        class="fa-regular fa-eye fa-lg"></i></a>
+                                <a href="/extracurricular-edit/{{ $data->id }}"><i
+                                        class="fa-solid fa-pen-to-square fa-lg"></i></a>
                             </div>
                         </td>
                     </tr>

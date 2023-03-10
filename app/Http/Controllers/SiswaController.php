@@ -72,6 +72,12 @@ class SiswaController extends Controller
         // mass assigment | wajib didaftarkan menggunakan fillable di model untuk data apa aja yang boleh diisi
         $siswa = Siswa::findOrFail($id);
         $siswa->update($request->all());
+
+        if ($siswa) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Update data berhasil.!');
+        }
+
         return redirect('/siswa');
     }
 }
