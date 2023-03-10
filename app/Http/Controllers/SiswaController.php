@@ -7,6 +7,7 @@ use App\Models\Siswa;
 use App\Models\ClassRoom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\SiswaCreateRequest;
 
 class SiswaController extends Controller
 {
@@ -29,8 +30,13 @@ class SiswaController extends Controller
         return view('/siswa-add', ['class' => $class]);
     }
 
-    public function store(Request $request)
+    public function store(SiswaCreateRequest $request)
     {
+        // $validated = $request->validate([
+        //     'nim' => 'unique:siswa|max:6',
+        //     'name' => 'max:10'
+        // ]);
+
         // Manual
         // $siswa = new Siswa;
         // $siswa->name = $request->name;

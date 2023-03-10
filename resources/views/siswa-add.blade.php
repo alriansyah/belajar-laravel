@@ -8,16 +8,27 @@
 
 @section('content')
     <div class="col-8">
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <form action="/siswa" method="POST">
             @csrf
             <div class="mb-4">
                 <label for="nama">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+                <input type="text" class="form-control" id="name" name="name">
             </div>
 
             <div class="mb-4">
                 <label for="gender">Gender</label>
-                <select name="gender" id="gender" class="form-control" required>
+                <select name="gender" id="gender" class="form-control">
                     <option value="">Select One</option>
                     <option value="L">L</option>
                     <option value="P">P</option>
@@ -26,12 +37,12 @@
 
             <div class="mb-4">
                 <label for="nim">NIM</label>
-                <input type="number" class="form-control" id="nim" name="nim" required>
+                <input type="number" class="form-control" id="nim" name="nim">
             </div>
 
             <div class="mb-4">
                 <label for="class">Kelas</label>
-                <select name="class_id" id="class" class="form-control" required>
+                <select name="class_id" id="class" class="form-control">
                     <option value="">Select One</option>
                     @foreach ($class as $list)
                         <option value="{{ $list->id }}">{{ $list->nama }}</option>
