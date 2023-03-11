@@ -39,6 +39,8 @@ Route::controller(SiswaController::class)->group(function () {
     Route::put('/siswa/{id}', 'update');
     Route::get('/siswa-delete/{id}', 'delete');
     Route::delete('/siswa-destroy/{id}', 'destroy');
+    Route::get('/siswa-deleted', 'deletedSiswa');
+    Route::get('/siswa/{id}/restore', 'restore');
 });
 
 Route::controller(ClassController::class)->group(function () {

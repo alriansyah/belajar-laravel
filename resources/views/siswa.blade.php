@@ -10,8 +10,9 @@
     {{--  --}}
     <div class="container">
 
-        <div class="mb-3">
+        <div class="mb-3 d-flex justify-content-between">
             <a href="/siswa-add" class="btn btn-primary">Tambah Data <i class="fa-solid fa-plus"></i></a>
+            <a href="/siswa-deleted" class="btn btn-danger">Show Deleted Data</a>
         </div>
 
         @if (Session::has('status'))

@@ -15,19 +15,19 @@ class SiswaController extends Controller
     {
         // Eloquent ORM (rekomendasi)
         $siswa = Siswa::get(); // $siswa = NamaModel::with('namaMethodRelationship')->get(); // ini cara Eager Loading
-        return view('/siswa', ['siswaList' => $siswa]);
+        return view('siswa', ['siswaList' => $siswa]);
     }
 
     public function show($id)
     {
         $siswa = Siswa::with(['class.waliKelas', 'extracurriculars'])->findOrFail($id);
-        return view('/siswa-detail', ['siswa' => $siswa]);
+        return view('siswa-detail', ['siswa' => $siswa]);
     }
 
     public function create()
     {
         $class = ClassRoom::select('id', 'nama')->get();
-        return view('/siswa-add', ['class' => $class]);
+        return view('siswa-add', ['class' => $class]);
     }
 
     public function store(SiswaCreateRequest $request)
@@ -62,7 +62,7 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::with('class')->findOrFail($id);
         $class = ClassRoom::where('id', '!=', $siswa->class_id)->get(['id', 'nama']);
-        return view('/siswa-edit', ['siswa' => $siswa, 'class' => $class]);
+        return view('siswa-edit', ['siswa' => $siswa, 'class' => $class]);
     }
 
     public function update(Request $request, $id)
@@ -90,7 +90,7 @@ class SiswaController extends Controller
     public function delete($id)
     {
         $siswa = Siswa::findOrFail($id);
-        return view('/siswa', ['siswa' => $siswa]);
+        return view('siswa', ['siswa' => $siswa]);
     }
 
     public function destroy($id)
@@ -101,6 +101,24 @@ class SiswaController extends Controller
         if ($deletedSiswa) {
             Session::flash('status', 'success');
             Session::flash('message', 'Delete siswa success.!');
+        }
+
+        return redirect('/siswa');
+    }
+
+    public function deletedSiswa()
+    {
+        $deletedSiswa = Siswa::onlyTrashed()->get();
+        return view('siswa-deleted-list', ['siswa' => $deletedSiswa]);
+    }
+
+    public function restore($id)
+    {
+        $deletedSiswa = Siswa::withTrashed()->where('id', $id)->restore();
+
+        if ($deletedSiswa) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Restore siswa success.!');
         }
 
         return redirect('/siswa');
