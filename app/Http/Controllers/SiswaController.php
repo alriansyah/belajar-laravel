@@ -11,10 +11,18 @@ use App\Http\Requests\SiswaCreateRequest;
 
 class SiswaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // Eloquent ORM (rekomendasi)
-        $siswa = Siswa::paginate(15); // $siswa = NamaModel::with('namaMethodRelationship')->get(); // ini cara Eager Loading
+        $cari = $request->cari;
+        $siswa = Siswa::with('class')
+            ->where('name', 'LIKE', '%' . $cari . '%')
+            ->orWhere('gender', $cari)
+            ->orWhere('nim', 'LIKE', '%' . $cari . '%')
+            ->orWhereHas('class', function($query) use ($cari) {
+                $query->where('nama', 'LIKE', '%' . $cari . '%');
+            })
+            ->paginate(15); // $siswa = NamaModel::with('namaMethodRelationship')->get(); // ini cara Eager Loading
         return view('siswa', ['siswaList' => $siswa]);
     }
 
