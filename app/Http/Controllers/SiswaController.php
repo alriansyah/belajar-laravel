@@ -14,7 +14,7 @@ class SiswaController extends Controller
     public function index()
     {
         // Eloquent ORM (rekomendasi)
-        $siswa = Siswa::get(); // $siswa = NamaModel::with('namaMethodRelationship')->get(); // ini cara Eager Loading
+        $siswa = Siswa::paginate(15); // $siswa = NamaModel::with('namaMethodRelationship')->get(); // ini cara Eager Loading
         return view('siswa', ['siswaList' => $siswa]);
     }
 

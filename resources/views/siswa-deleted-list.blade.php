@@ -10,7 +10,7 @@
     <div class="container">
 
         <div class="mb-3">
-            <a href="/siswa" class="btn btn-primary">Kembali <i class="fa-regular fa-circle-left"></i></a>
+            <a href="/siswa" class="btn btn-primary"><i class="fa-regular fa-circle-left"></i> Kembali</a>
         </div>
 
         <table class="table table-hover table-bordered border-dark">

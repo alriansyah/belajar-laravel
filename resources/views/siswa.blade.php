@@ -75,5 +75,9 @@
                 @endforeach
             </tbody>
         </table>
+
+        <div class="my-4">
+            {{ $siswaList->links() }}
+        </div>
     </div>
 @endsection
