@@ -17,7 +17,8 @@ class Siswa extends Model
         'name', 
         'gender', 
         'nim', 
-        'class_id', 
+        'class_id',
+        'image'
         // 'created_at', 
         // 'updated_at'
     ];

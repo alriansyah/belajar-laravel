@@ -19,7 +19,7 @@
             </div>
         @endif
 
-        <form action="/siswa" method="POST">
+        <form action="/siswa" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-4">
                 <label for="nama">Name</label>
@@ -48,6 +48,13 @@
                         <option value="{{ $list->id }}">{{ $list->nama }}</option>
                     @endforeach
                 </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="photo">Foto</label>
+                <div class="input-group">
+                    <input type="file" class="form-control" id="photo" name="photo">
+                </div>
             </div>
 
             <div class="mb-4">

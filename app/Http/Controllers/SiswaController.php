@@ -19,10 +19,10 @@ class SiswaController extends Controller
             ->where('name', 'LIKE', '%' . $cari . '%')
             ->orWhere('gender', $cari)
             ->orWhere('nim', 'LIKE', '%' . $cari . '%')
-            ->orWhereHas('class', function($query) use ($cari) {
+            ->orWhereHas('class', function ($query) use ($cari) {
                 $query->where('nama', 'LIKE', '%' . $cari . '%');
             })
-            ->paginate(15); // $siswa = NamaModel::with('namaMethodRelationship')->get(); // ini cara Eager Loading
+            ->paginate(15);
         return view('siswa', ['siswaList' => $siswa]);
     }
 
@@ -40,22 +40,14 @@ class SiswaController extends Controller
 
     public function store(SiswaCreateRequest $request)
     {
-        // $validated = $request->validate([
-        //     'nim' => 'unique:siswa|max:6',
-        //     'name' => 'max:10'
-        // ]);
+        $newName = '';
+        if ($request->file('photo')) {
+            $extension = $request->file('photo')->getClientOriginalExtension();
+            $newName = $request->name . '-' . now()->timestamp . '.' . $extension;
+            $request->file('photo')->storeAs('photo', $newName);
+        }
 
-        // Manual
-        // $siswa = new Siswa;
-        // $siswa->name = $request->name;
-        // $siswa->gender = $request->gender;
-        // $siswa->nim = $request->nim;
-        // $siswa->class_id = $request->class_id;
-        // $siswa->save();
-
-        // mass assigment | wajib didaftarkan menggunakan fillable di model untuk data apa aja yang boleh diisi
-        // $siswa = new Siswa;
-        // $siswa->create($request->all());
+        $request['image'] = $newName;
         $siswa = Siswa::create($request->all());
 
         if ($siswa) {
@@ -75,15 +67,6 @@ class SiswaController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Manual
-        // $siswa = Siswa::findOrFail($id);
-        // $siswa->name = $request->name;
-        // $siswa->gender = $request->gender;
-        // $siswa->nim = $request->nim;
-        // $siswa->class_id = $request->class_id;
-        // $siswa->save();
-
-        // mass assigment | wajib didaftarkan menggunakan fillable di model untuk data apa aja yang boleh diisi
         $siswa = Siswa::findOrFail($id);
         $siswa->update($request->all());
 

@@ -14,6 +14,14 @@
 
     <h5>Halaman Detail Siswa</h5>
 
+    <div class="my-3 d-flex">
+        @if ($siswa->image != '')
+            <img src="{{ asset('storage/photo/' . $siswa->image) }}" alt="" class="w-15 mx-auto">
+        @else
+            <img src="{{ asset('images/default.png') }}" alt="" class="w-15 mx-auto">
+        @endif
+    </div>
+
     <table class="table table-bordered mt-3">
         <thead>
             <tr>
