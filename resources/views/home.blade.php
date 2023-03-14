@@ -6,5 +6,6 @@
 @endsection
 
 @section('content')
+    <h4>Selamat datang {{ Auth::user()->name }}. Anda login sebagai {{ Auth::user()->role->name }}</h4>
 
 @endsection

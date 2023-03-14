@@ -12622,3 +12622,15 @@ body.sidebar-toggled footer.sticky-footer {
 .border-cek {
     border: 1px solid black;
 }
+
+.login-box {
+    border: 1px solid black;
+    width: 500px;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.color {
+    color: white;
+}
