@@ -20,25 +20,25 @@ use App\Http\Controllers\ExtracurricularController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->middleware('auth');
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('/login', 'login')->name('login')->middleware('guest');
     Route::post('/login', 'authenticating')->middleware('guest');
-    Route::get('/logout', 'logout')->middleware('auth');
+    Route::get('/logout', 'logout')->middleware(['auth']);
 });
 
 Route::controller(SiswaController::class)->group(function () {
     Route::get('/siswa', 'index')->middleware('auth');
-    Route::get('/siswa-detail/{id}', 'show')->middleware('auth');
-    Route::get('/siswa-add', 'create')->middleware('auth');
-    Route::post('/siswa', 'store')->middleware('auth');
-    Route::get('/siswa-edit/{id}', 'edit')->middleware('auth');
-    Route::put('/siswa/{id}', 'update')->middleware('auth');
-    Route::get('/siswa-delete/{id}', 'delete')->middleware('auth');
-    Route::delete('/siswa-destroy/{id}', 'destroy')->middleware('auth');
-    Route::get('/siswa-deleted', 'deletedSiswa')->middleware('auth');
-    Route::get('/siswa/{id}/restore', 'restore')->middleware('auth');
+    Route::get('/siswa-detail/{id}', 'show')->middleware(['auth', 'must-admin-or-teacher']);
+    Route::get('/siswa-add', 'create')->middleware(['auth', 'must-admin-or-teacher']);
+    Route::post('/siswa', 'store')->middleware(['auth', 'must-admin-or-teacher']);
+    Route::get('/siswa-edit/{id}', 'edit')->middleware(['auth', 'must-admin-or-teacher']);
+    Route::put('/siswa/{id}', 'update')->middleware(['auth', 'must-admin-or-teacher']);
+    Route::get('/siswa-delete/{id}', 'delete')->middleware(['auth', 'must-admin']);
+    Route::delete('/siswa-destroy/{id}', 'destroy')->middleware('auth', 'must-admin');
+    Route::get('/siswa-deleted', 'deletedSiswa')->middleware('auth', 'must-admin');
+    Route::get('/siswa/{id}/restore', 'restore')->middleware('auth', 'must-admin');
 });
 
 Route::controller(ClassController::class)->group(function () {
